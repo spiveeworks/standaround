@@ -19,8 +19,8 @@ tag @e[tag=!captured_team_b, tag=capture_point_near_team_a, tag=!capture_point_n
 # adjust progress
 scoreboard players add @e[tag=capture_point_being_secured, scores={capture_progress=..100}] capture_progress 4
 scoreboard players remove @e[tag=capture_point_threatened, scores={capture_progress=0..}] capture_progress 4
-scoreboard players add @e[tag=!capture_point_being_secured, tag=!capture_point_threatened, tag=capture_point_is_secure, scores={capture_progress=..100}] 1
-scoreboard players remove @e[tag=!capture_point_being_secured, tag=!capture_point_threatened, tag=!capture_point_is_secure, scores={capture_progress=..100}] 1
+scoreboard players add @e[tag=!capture_point_being_secured, tag=!capture_point_threatened, tag=capture_point_is_secure, scores={capture_progress=..100}] capture_progress 1
+scoreboard players remove @e[tag=!capture_point_being_secured, tag=!capture_point_threatened, tag=!capture_point_is_secure, scores={capture_progress=0..}] capture_progress 1
 
 # update securedness
 execute positioned as @e[tag=capture_point_is_secure, scores={capture_progress=..0}] run function ctf:on_point_loss
