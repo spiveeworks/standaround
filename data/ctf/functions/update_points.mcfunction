@@ -1,8 +1,8 @@
 # find out who is near what
 tag @e remove capture_point_near_team_a
 tag @e remove capture_point_near_team_b
-execute as @a[team=team_a] run tag @e[tag=capture_point, distance=0..5] add capture_point_near_team_a
-execute as @a[team=team_b] run tag @e[tag=capture_point, distance=0..5] add capture_point_near_team_b
+execute positioned as @a[team=team_a] run tag @e[tag=capture_point, distance=0..5] add capture_point_near_team_a
+execute positioned as @a[team=team_b] run tag @e[tag=capture_point, distance=0..5] add capture_point_near_team_b
 
 # find out which points are being attacked
 tag @e remove capture_point_threatened
@@ -21,8 +21,8 @@ scoreboard players add @e[tag=!capture_point_being_secured, tag=!capture_point_t
 scoreboard players remove @e[tag=!capture_point_being_secured, tag=!capture_point_threatened, tag=!capture_point_is_secure, scores={capture_progress=..100}] 1
 
 # update securedness
-execute as @e[tag=capture_point_is_secure, scores={capture_progress=..0}] run function ctf:on_point_loss
+execute positioned as @e[tag=capture_point_is_secure, scores={capture_progress=..0}] run function ctf:on_point_loss
 tag @e[tag=capture_point_is_secure, scores={capture_progress=..0}] remove capture_point_is_secure
-execute as @e[tag=capture_point, tag=!capture_point_is_secure, scores={capture_progress=100..}] run function ctf:on_point_gain
+execute positioned as @e[tag=capture_point, tag=!capture_point_is_secure, scores={capture_progress=100..}] run function ctf:on_point_gain
 tag @e[tag=capture_point, scores={capture_progress=100..}] add capture_point_is_secure
 
